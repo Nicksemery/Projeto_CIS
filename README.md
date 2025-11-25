@@ -59,6 +59,7 @@ erDiagram
         Senha
         Permissao
     }
+
 ```
 
 # Dashboard Psicologia
