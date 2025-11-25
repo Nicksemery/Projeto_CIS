@@ -1,5 +1,66 @@
 # Projeto_CIS_Rascunhos
 
+```mermaid
+erDiagram
+    Psicologo ||--o{ Coordenacao : "(1,1) para (0,n)"
+    Coordenacao ||--|| Psicologo : "(1,1) para (1,1)"
+
+    Psicologo ||--o{ Sessao : "(1,1) para (0,n)"
+    Coordenacao ||--|| Sessao : "(1,1) para (0,n)"
+
+    Sessao ||--|| Coordenacao : "(0,n) para (1,1)"
+    Sessao ||--|| Psicologo : "(0,n) para (1,1)"
+    Sessao ||--|| Paciente : "(1,1) para (0,n)"
+    
+    Coordenacao ||--|| Paciente : "(1,1) para (0,n)"
+    
+    Usuario ||--o{ Paciente : "(1,1) para (0,n)"
+    
+    
+    Psicologo {
+        PK id_psicologo
+        FK id_Coordenacao
+        VARCHAR Nome
+        VARCHAR Matricula
+        BOOLEAN Ativo
+    }
+
+    Coordenacao {
+        PK id_coordenacao
+        VARCHAR Nome
+        VARCHAR Matricula
+        VARCHAR Cargo
+        BOOLEAN Ativo
+    }
+
+    Sessao {
+        PK id_sessao
+        FK id_Coordenacao
+        FK id_Psicologo
+        FK id_Usuario
+        BOOLEAN Horario_Confirmado
+        BOOLEAN Ativo
+    }
+
+    Paciente {
+        PK id_usuario
+        FK id_Coordenacao
+        FK id_Usuario
+        VARCHAR Nome
+        VARCHAR Telefone
+        DATE Disponibilidade_Data
+        TIME Disponibilidade_Horario
+        DATETIME Data_Registro
+    }
+
+    Usuario {
+        PK id_paciente
+        VARCHAR Login
+        VARCHAR Senha
+        VARCHAR Permissao
+    }
+```
+
 # Dashboard Psicologia
 
 **Description**: Sistema de gestão para psicólogos com calendário mensal interativo de horários disponíveis dos pacientes. Design amigável e colorido com interface responsiva.
