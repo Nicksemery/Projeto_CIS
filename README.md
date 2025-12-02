@@ -72,27 +72,27 @@ erDiagram
 ## Directory Structure
 Frontend:
 - `/src`: Código frontend
-  - `/components`: Componentes React 
-  - `/components`: `/calendar`: Calendar components (MonthlyCalendar.jsx, PotentialPatientsGrid.jsx)
-  - `/components`: `/common`: Common components (Icons.jsx, PatientDetailSidebar.jsx)
-  - `/components`:`/layouts`: Sidebar component (Sidebar.jsx)
-  - `/data`: Dados mock (mockData.ts)
-  - `/utils`: Definições (dataUtil.js)
-  - `/view`: Dashboard overview (DashbooardView.jsx)
+  - `/components`: Componentes React
+  - `/components`: `/calendar`: Calendar components (MonthlyCalendar.jsx, PotentialPatientsGrid.jsx)
+  - `/components`: `/common`: Common components (Icons.jsx, PatientDetailSidebar.jsx)
+  - `/components`:`/layouts`: Sidebar component (Sidebar.jsx)
+  - `/data`: Dados mock (mockData.ts)
+  - `/utils`: Definições (dataUtil.js)
+  - `/view`: Dashboard overview (DashbooardView.jsx)
  
 Backend:
 - `/src` : codigo fonte
-    - `/controller`: controllers de serviço
-    - `/domain`: `/dtos` : todos os Dtos do sistema, dividido em request e response
-    - `/domain`: `/dtos` :`/request`: esquemas de dtos de ponto de pedido http (entrada de dados)
-    - `/domain`: `/dtos` :`/response`: esquemas de dtos de ponto de pedido http (saida de dados)
-    - `/domain`: `/entity` : todos os esquemas de entidades
-    - `/infra` : infraestrutura do sistema
-    - `/infra`: `/cofig` : configurações e segurança
-    - `/infra` : `/mapper` : logica de encapsulamento e transformação de dto(request) para entidade e entidade para dto (response)
-    - `/infra` : `/repository` : repositorios das entidades e ponto de acesso ao banco
-    - `/infra` : `/service` : camada de interface e implementação das interfaces para encapsular os metodos dos controllers
-    - `/infra` : `/validate` : camada de validação para o fluxo de informação
+  - `/controller`: controllers de serviço
+  - `/domain`: `/dtos` : todos os Dtos do sistema, dividido em request e response
+  - `/domain`: `/dtos` :`/request`: esquemas de dtos de ponto de pedido http (entrada de dados)
+  - `/domain`: `/dtos` :`/response`: esquemas de dtos de ponto de pedido http (saida de dados)
+  - `/domain`: `/entity` : todos os esquemas de entidades
+  - `/infra` : infraestrutura do sistema
+  - `/infra`: `/cofig` : configurações e segurança
+  - `/infra` : `/mapper` : logica de encapsulamento e transformação de dto(request) para entidade e entidade para dto (response)
+  - `/infra` : `/repository` : repositorios das entidades e ponto de acesso ao banco
+  - `/infra` : `/service` : camada de interface e implementação das interfaces para encapsular os metodos dos controllers
+  - `/infra` : `/validate` : camada de validação para o fluxo de informação
 
 
 ### Limitações Conhecidas
@@ -111,47 +111,47 @@ Backend:
 
 ## API Endpoints
 - `/dtoRequests`: entrada de dados json
-    - `/coordenacao`:{"nome": "String",
+  - `/coordenacao`:{"nome": "String",
                           "email": "String",
                           "matricula": "String"}
-    - `/paciente`:{
+  - `/paciente`:{
                       "nome": "String",
                       "telefone": "String",
                       "idCoordenacao": 0, -->requer valido
                       "disponibilidadeData": "SEGUNDA", -->tipo enum
                       "disponibilidadeHorario": "H0800" -->ex h 08:00 }
-    - `/psicologo`:{
+  - `/psicologo`:{
   "nome": "string",
   "matricula": "string",
   "idCoordenacao": 0 --> requer valido
 }
-    - `/sessao`:{
+  - `/sessao`:{
   "idPsicologo": 0, --> requer valido
   "idPaciente":0, --> requer valido
   "idCoordenacao": 0, --> requer valido
   "dataHoraAgendada": "2025-12-02T07:02:21.376Z" --> hora de entrada de informação
 }
 
-- `/dtoResponses`: web view
+  - `/dtoResponses`: web view
     - `/coordenacao`:{
   "id": 0,
   "nome": "string",
   "matricula": "string",
   "email": "string"
 }
-    - `/paciente`:{
+  - `/paciente`:{
   "id": 0,
   "idCoordenacao": 0,
   "nome": "string",
   "telefone": "string"
 }
-    - `/psicologo`:{
+  - `/psicologo`:{
   "id": 0,
   "idCoordenacao": 0,
   "nome": "string",
   "matricula": "string"
 }
-    - `/sessao`:{
+  - `/sessao`:{
   "id": 0,
   "idPaciente": 0,
   "idPsicologo": 0,
