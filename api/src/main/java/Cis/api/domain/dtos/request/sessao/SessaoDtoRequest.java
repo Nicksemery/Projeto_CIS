@@ -1,18 +1,19 @@
 package Cis.api.domain.dtos.request.sessao;
 
+import Cis.api.domain.enums.DiaSemana;
+import Cis.api.domain.enums.HorarioAgendamento;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDateTime;
 
 public record SessaoDtoRequest(
-        @NotNull
         Long idPsicologo,
 
-        @NotNull
+        Long idPaciente,
+
         Long idCoordenacao, // Coordenacao que gerencia esta sessão
 
-        @NotNull
-        // Use @JsonFormat no Controller para garantir o formato ISO
-        LocalDateTime dataHora
+        // O campo deve ser a data/hora exata do agendamento, não a disponibilidade
+        LocalDateTime dataHoraAgendada
 ) {
 }

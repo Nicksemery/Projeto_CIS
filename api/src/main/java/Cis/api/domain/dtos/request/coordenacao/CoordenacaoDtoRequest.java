@@ -6,15 +6,10 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 public record CoordenacaoDtoRequest (
 
-        Long idUsuario,
         String nome,
 
         String email,
 
-        String matricula, // Campo Matricula
-
-        Cargos cargo, // Campo Cargo (Enum)
-
-        TokenDtoRequest dadosUsuario
+        String matricula
 ) {
 }

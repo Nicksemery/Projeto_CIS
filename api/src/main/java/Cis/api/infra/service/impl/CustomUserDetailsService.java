@@ -1,3 +1,4 @@
+/*
 package Cis.api.infra.service.impl;
 
 import Cis.api.infra.repository.UsuarioRepository;
@@ -23,3 +24,5 @@ public class CustomUserDetailsService implements UserDetailsService {
         return repository.findByLogin(username).orElseThrow(() -> new UsernameNotFoundException("Usuario nao encontrado" + username));
     }
 }
+
+ */

@@ -1,3 +1,4 @@
+/*
 package Cis.api.controllers;
 
 import Cis.api.domain.dtos.request.TokenDtoRequest;
@@ -50,3 +51,5 @@ public class UsuarioController {
         return ResponseEntity.created(uri).body(new UsuarioDtoResponse(usuario));
     }
 }
+
+ */

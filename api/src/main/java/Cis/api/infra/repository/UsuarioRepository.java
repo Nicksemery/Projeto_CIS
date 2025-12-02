@@ -1,4 +1,4 @@
-package Cis.api.infra.repository;
+/*package Cis.api.infra.repository;
 
 import Cis.api.domain.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,3 +10,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByLogin(String login);
 
 }
+
+
+ */

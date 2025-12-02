@@ -5,7 +5,7 @@ import Cis.api.domain.dtos.response.SessaoDtoResponse;
 
 public interface SessaoService {
 
-    SessaoDtoResponse agendarSessao(Long idUsuarioLogado, SessaoDtoRequest dto);
+    SessaoDtoResponse agendarSessao( SessaoDtoRequest dto);
 
     // Aprovar Sessão (Restrito à Coordenacao)
     SessaoDtoResponse aprovarSessao(Long idSessao);

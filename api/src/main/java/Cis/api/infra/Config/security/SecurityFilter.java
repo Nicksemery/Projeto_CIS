@@ -1,3 +1,4 @@
+/*
 package Cis.api.infra.Config.security;
 
 import Cis.api.infra.repository.UsuarioRepository;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-
+/*
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
 
@@ -58,3 +59,5 @@ public class SecurityFilter extends OncePerRequestFilter {
     }
 
 }
+
+ */

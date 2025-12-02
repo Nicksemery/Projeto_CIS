@@ -1,4 +1,4 @@
-package Cis.api.infra.Config.security;
+/*package Cis.api.infra.Config.security;
 
 import Cis.api.domain.entity.Usuario;
 import Cis.api.domain.enums.Roles;
@@ -37,3 +37,5 @@ public class Bootstrapper {
         };
     }
 }
+
+ */

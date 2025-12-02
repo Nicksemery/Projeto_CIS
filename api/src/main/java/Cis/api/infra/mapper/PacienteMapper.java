@@ -4,21 +4,19 @@ import Cis.api.domain.dtos.request.paciente.PacienteDtoRequest;
 import Cis.api.domain.dtos.response.PacienteDtoResponse;
 import Cis.api.domain.entity.Coordenacao;
 import Cis.api.domain.entity.Paciente;
-import Cis.api.domain.entity.Usuario;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PacienteMapper {
 
     // Criação: Usa o Construtor Imutável da Entidade
-    public Paciente entidade(PacienteDtoRequest dto, Coordenacao coordenacao, Usuario usuario) {
+    public Paciente entidade(PacienteDtoRequest dto, Coordenacao coordenacao) {
         if (dto == null) return null;
 
         return new Paciente(
                 dto.nome(),
                 dto.telefone(),
                 coordenacao,
-                usuario,
                 dto.disponibilidadeData(),
                 dto.disponibilidadeHorario()
         );
@@ -31,10 +29,10 @@ public class PacienteMapper {
         // Assumindo que PacienteDtoRespons é um record
         return new PacienteDtoResponse(
                 paciente.getId(),
-                paciente.getNome(),
-                paciente.getTelefone(),
                 paciente.getCoordenacao().getId(),
-                paciente.getUsuario().getId()
+                paciente.getNome(),
+                paciente.getTelefone()
+
         );
     }
 

@@ -1,3 +1,4 @@
+/*
 package Cis.api.infra.service;
 
 import Cis.api.domain.entity.Usuario;
@@ -37,7 +38,7 @@ public class TokenService {
                     .withExpiresAt(dataExpiracao())
                     .sign(algorithm);
              */
-
+/*
         }catch (JWTCreationException ex){
             throw new RuntimeException("Erro ao gerar token");
         }
@@ -64,3 +65,5 @@ public class TokenService {
 
 
 }
+
+ */

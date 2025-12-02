@@ -3,12 +3,9 @@ package Cis.api.infra.service.impl;
 import Cis.api.domain.dtos.request.coordenacao.CoordenacaoDtoRequest;
 import Cis.api.domain.dtos.response.CoordenacaoDtoResponse;
 import Cis.api.domain.entity.Coordenacao;
-import Cis.api.domain.entity.Usuario;
-import Cis.api.domain.enums.Roles;
 import Cis.api.infra.mapper.CoordenacaoMapper;
 import Cis.api.infra.repository.CoordenacaoRepository;
 import Cis.api.infra.service.CoordenacaoService;
-import Cis.api.infra.service.UsuarioService;
 import Cis.api.infra.validate.CoordenacaoValidate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +21,7 @@ public class CoordenacaoServiceImpl implements CoordenacaoService {
     private final CoordenacaoMapper mapper;
     private final CoordenacaoValidate validate;
 
-    public CoordenacaoServiceImpl(CoordenacaoRepository repository, CoordenacaoMapper mapper, CoordenacaoValidate validate, UsuarioService usuarioService) {
+    public CoordenacaoServiceImpl(CoordenacaoRepository repository, CoordenacaoMapper mapper, CoordenacaoValidate validate) {
         this.repository = repository;
         this.mapper = mapper;
         this.validate = validate;
@@ -47,7 +44,7 @@ public class CoordenacaoServiceImpl implements CoordenacaoService {
     @Override
     public CoordenacaoDtoResponse alterarCoordenacao(Long id, CoordenacaoDtoRequest dto) {
         Coordenacao coorExistente = validate.validarCoordenacaoPorId(id);
-        coorExistente.atualizarDados(dto.nome(),dto.email(), dto.matricula(), dto.cargo());
+        coorExistente.atualizarDados(dto.nome(),dto.email(), dto.matricula());
         Coordenacao atualizado = repository.save(coorExistente);
         return mapper.dtoResposta(atualizado);
     }

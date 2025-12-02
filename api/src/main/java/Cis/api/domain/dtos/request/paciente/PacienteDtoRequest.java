@@ -9,7 +9,6 @@ public record PacienteDtoRequest(
         String telefone,
         Long idCoordenacao,
         DiaSemana disponibilidadeData, // Novo campo
-        HorarioAgendamento disponibilidadeHorario, // Novo campo
-        TokenDtoRequest dadosUsuario
+        HorarioAgendamento disponibilidadeHorario
 ) {
 }

@@ -1,3 +1,4 @@
+/*
 package Cis.api.domain.entity;
 
 import Cis.api.domain.enums.Roles;
@@ -89,3 +90,5 @@ public class Usuario implements UserDetails {
         return UserDetails.super.isEnabled();
     }
 }
+
+ */

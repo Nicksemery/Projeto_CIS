@@ -1,3 +1,4 @@
+/*
 package Cis.api.controllers;
 
 import Cis.api.domain.dtos.request.TokenDtoRequest;
@@ -38,3 +39,5 @@ public class AutenticacaoController {
         return ResponseEntity.ok(new TokenDtoResponse(tokenJWT));
     }
 }
+
+ */

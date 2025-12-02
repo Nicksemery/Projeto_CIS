@@ -41,9 +41,10 @@ public class Coordenacao {
     private String matricula;
     private String email;
 
+    /*
     @Enumerated(EnumType.STRING)
     private Cargos cargo;
-
+     */
     @Setter
     private boolean ativo;
 
@@ -55,7 +56,7 @@ public class Coordenacao {
     private List<Paciente> pacientes; // Nome do campo na entidade Paciente
 
 
-    public void atualizarDados(String nome, String matricula, String email, Cargos cargo) {
+    public void atualizarDados(String nome, String matricula, String email) {
         if (nome != null && !nome.isBlank()) {
             this.nome = nome;
         }
@@ -64,9 +65,6 @@ public class Coordenacao {
         }
         if (email != null && !email.isBlank()) {
             this.email = email;
-        }
-        if (cargo != null) {
-            this.cargo = cargo;
         }
     }
 

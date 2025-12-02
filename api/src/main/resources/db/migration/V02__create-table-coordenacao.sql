@@ -1,9 +1,9 @@
 CREATE TABLE coordenacao(
                             id INT not null auto_increment,
-                            Nome VARCHAR(255) NOT NULL,
+                            nome VARCHAR(255) NOT NULL,
                             email varchar(255),
-                            Matricula VARCHAR(255) NOT NULL,
-                            Ativo BOOLEAN DEFAULT TRUE,
-                            UNIQUE(Matricula),
+                            matricula VARCHAR(255) NOT NULL,
+                            ativo BOOLEAN DEFAULT TRUE,
+                            UNIQUE(matricula),
                             primary key (id)
 );

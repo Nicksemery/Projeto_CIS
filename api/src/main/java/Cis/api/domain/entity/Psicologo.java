@@ -37,16 +37,18 @@ public class Psicologo {
     private Coordenacao coordenacao;
 
     // Relacionamento com o Usuário (Um Psicólogo é Um Usuário para o Login)
+    /*
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", unique = true, nullable = false)
     private Usuario usuario;
 
 
-    public Psicologo(String nome, String matricula,Coordenacao coordenacao, Usuario usuario) {
+     */
+
+    public Psicologo(String nome, String matricula,Coordenacao coordenacao) {
         this.nome = nome;
         this.matricula = matricula;
         this.coordenacao = coordenacao;
-        this.usuario = usuario;
     }
 
     public void atualizarEntidade(String nome, String matricula) {

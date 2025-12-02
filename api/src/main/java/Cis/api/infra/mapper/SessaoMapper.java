@@ -6,6 +6,7 @@ import Cis.api.domain.entity.Coordenacao;
 import Cis.api.domain.entity.Paciente;
 import Cis.api.domain.entity.Psicologo;
 import Cis.api.domain.entity.Sessao;
+import Cis.api.domain.enums.DiaSemana;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +14,7 @@ public class SessaoMapper {
 
 
     // 1. DTO de Request para Entidade (Usado no agendamento)
+    // A assinatura do mapper deve refletir os objetos que a Entidade Sessao precisa
     public Sessao entidade(SessaoDtoRequest dto, Paciente paciente, Psicologo psicologo, Coordenacao coordenacao) {
         if (dto == null) return null;
 
@@ -21,7 +23,7 @@ public class SessaoMapper {
                 paciente,
                 psicologo,
                 coordenacao,
-                dto.dataHora()
+                dto.dataHoraAgendada() // Agora usando o campo correto do DTO
         );
     }
 

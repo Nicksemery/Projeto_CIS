@@ -49,21 +49,24 @@ public class Paciente {
     @JoinColumn(name = "id_coordenacao", nullable = false)
     private Coordenacao coordenacao;
 
+    /*
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", unique = true, nullable = false)
     private Usuario usuario;
 
+     */
+
     @Setter
     private boolean ativo;
 
-    public Paciente(String nome, String telefone, Coordenacao coordenacao, Usuario usuario, DiaSemana dia, HorarioAgendamento horario) {
+    public Paciente(String nome, String telefone, Coordenacao coordenacao, DiaSemana dia, HorarioAgendamento horario) {
         this.nome = nome;
         this.telefone = telefone;
         this.coordenacao = coordenacao;
-        this.usuario = usuario;
         this.dia = dia;
         this.horario = horario;
         this.dataRegistro = LocalDate.now();
+        this.ativo = true;
     }
 
     // Método para alteração de dados de valor (controlado)

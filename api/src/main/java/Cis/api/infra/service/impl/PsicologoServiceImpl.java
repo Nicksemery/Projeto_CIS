@@ -1,18 +1,13 @@
 package Cis.api.infra.service.impl;
 
 import Cis.api.domain.dtos.request.psicologo.PsicologoDtoRequest;
-import Cis.api.domain.dtos.request.TokenDtoRequest;
 import Cis.api.domain.dtos.request.psicologo.PsicologoDtoUpdateRequest;
 import Cis.api.domain.dtos.response.PsicologoDtoRespons;
 import Cis.api.domain.entity.Coordenacao;
 import Cis.api.domain.entity.Psicologo;
-import Cis.api.domain.entity.Usuario;
-import Cis.api.domain.enums.Roles;
 import Cis.api.infra.mapper.PsicologoMapper;
-import Cis.api.infra.repository.CoordenacaoRepository;
 import Cis.api.infra.repository.PsicologoRepository;
 import Cis.api.infra.service.PsicologoService;
-import Cis.api.infra.service.UsuarioService;
 import Cis.api.infra.validate.CoordenacaoValidate;
 import Cis.api.infra.validate.PsicologoValidate;
 import org.springframework.stereotype.Service;
@@ -28,20 +23,17 @@ public class PsicologoServiceImpl implements PsicologoService {
     private final PsicologoRepository repository;
     private final PsicologoValidate validar;
     private final CoordenacaoValidate coordenacaoValidate;
-    private final UsuarioService usuarioService;
     private final PsicologoMapper mapper;
 
     public PsicologoServiceImpl(PsicologoRepository repository,
                                 PsicologoValidate validar,
                                 PsicologoMapper mapper,
-                                UsuarioService usuarioService,
-                                CoordenacaoValidate coordenacaoValidate,
-                                CoordenacaoRepository coordRepository) {
+                                CoordenacaoValidate coordenacaoValidate
+                                ) {
         this.repository = repository;
         this.validar = validar;
         this.coordenacaoValidate = coordenacaoValidate;
         this.mapper = mapper;
-        this.usuarioService = usuarioService;
     }
 
     @Override
@@ -49,10 +41,7 @@ public class PsicologoServiceImpl implements PsicologoService {
 
         Coordenacao coordenacao = coordenacaoValidate.validarCoordenacaoPorId(dto.idCoordenacao());
 
-        TokenDtoRequest dadosAutenticacao = dto.dadosUsuario();
-        Usuario salvarUsuario = usuarioService.criarUsuario(dadosAutenticacao,Roles.PSICOLOGO);
-
-        Psicologo psicologo = mapper.entidade(dto,coordenacao,salvarUsuario);
+        Psicologo psicologo = mapper.entidade(dto,coordenacao);
         validar.validarMatriculaExistente(psicologo.getMatricula());
 
         Psicologo salvarPsicologo = repository.save(psicologo);

@@ -3,7 +3,6 @@ package Cis.api.infra.mapper;
 import Cis.api.domain.dtos.request.coordenacao.CoordenacaoDtoRequest;
 import Cis.api.domain.dtos.response.CoordenacaoDtoResponse;
 import Cis.api.domain.entity.Coordenacao;
-import Cis.api.domain.entity.Usuario;
 import org.springframework.stereotype.Component;
 
 @Component

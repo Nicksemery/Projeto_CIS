@@ -1,18 +1,13 @@
 package Cis.api.infra.service.impl;
 
-import Cis.api.domain.dtos.request.TokenDtoRequest;
 import Cis.api.domain.dtos.request.paciente.PacienteDtoRequest;
 import Cis.api.domain.dtos.request.paciente.PacienteDtoUpdateRequest;
 import Cis.api.domain.dtos.response.PacienteDtoResponse;
 import Cis.api.domain.entity.Coordenacao;
 import Cis.api.domain.entity.Paciente;
-import Cis.api.domain.entity.Usuario;
-import Cis.api.domain.enums.Roles;
 import Cis.api.infra.mapper.PacienteMapper;
-import Cis.api.infra.repository.CoordenacaoRepository;
 import Cis.api.infra.repository.PacienteRepository;
 import Cis.api.infra.service.PacienteService;
-import Cis.api.infra.service.UsuarioService;
 import Cis.api.infra.validate.CoordenacaoValidate;
 import Cis.api.infra.validate.PacienteValidate;
 import org.springframework.stereotype.Service;
@@ -28,16 +23,12 @@ public class PacienteServiceImpl implements PacienteService {
     private final PacienteRepository repository;
     private final PacienteValidate validate;
     private final PacienteMapper mapper;
-    private final UsuarioService usuarioService;
-    private final CoordenacaoRepository coordRepository;
     private final CoordenacaoValidate coordValidate;
 
-    public PacienteServiceImpl(PacienteRepository repository, PacienteValidate validate ,PacienteMapper mapper, UsuarioService usuarioService, CoordenacaoRepository coordRepository, CoordenacaoValidate coordValidate) {
+    public PacienteServiceImpl(PacienteRepository repository, PacienteValidate validate ,PacienteMapper mapper, CoordenacaoValidate coordValidate) {
         this.repository = repository;
         this.validate = validate;
         this.mapper = mapper;
-        this.usuarioService = usuarioService;
-        this.coordRepository = coordRepository;
         this.coordValidate = coordValidate;
     }
 
@@ -47,16 +38,10 @@ public class PacienteServiceImpl implements PacienteService {
 
         // 1. Busca a Coordenação
         Coordenacao coordenacao = coordValidate.validarCoordenacaoPorId(dto.idCoordenacao());
-        // 2. DELEGAÇÃO: Cria a conta de segurança
-        TokenDtoRequest dadosCriacao = dto.dadosUsuario();
 
-        Usuario usuarioSalvo = usuarioService.criarUsuario(
-                dadosCriacao,
-                Roles.PACIENTE // Role correta
-        );
 
         // 3. Criação da Entidade Paciente (Via Mapper/Construtor)
-        Paciente paciente = mapper.entidade(dto, coordenacao, usuarioSalvo);
+        Paciente paciente = mapper.entidade(dto, coordenacao);
 
         Paciente pacienteSalvo = repository.save(paciente);
 

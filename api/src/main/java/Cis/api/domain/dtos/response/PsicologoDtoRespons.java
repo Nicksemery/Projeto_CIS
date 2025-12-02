@@ -4,10 +4,10 @@ import lombok.Data;
 
 public record PsicologoDtoRespons(
         Long id,
-        String nome,
-        String matricula,
         Long idCoordenacao,
-        Long idUsuario
+        String nome,
+        String matricula
+
 ) {
 
 }

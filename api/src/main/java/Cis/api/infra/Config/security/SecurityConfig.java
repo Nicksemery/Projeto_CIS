@@ -1,3 +1,4 @@
+/*
 package Cis.api.infra.Config.security;
 
 import org.springframework.context.annotation.Bean;
@@ -79,10 +80,12 @@ public class SecurityConfig {
 
 
      */
-
+/*
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
 }
+
+ */

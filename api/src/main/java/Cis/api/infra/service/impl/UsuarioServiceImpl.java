@@ -1,3 +1,4 @@
+/*
 package Cis.api.infra.service.impl;
 
 import Cis.api.domain.dtos.request.TokenDtoRequest;
@@ -29,3 +30,5 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.save(usuario);
     }
 }
+
+ */

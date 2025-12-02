@@ -10,6 +10,6 @@ CREATE TABLE sessao(
 
                          PRIMARY KEY (id_sessao),
                          FOREIGN KEY (id_coordenacao) REFERENCES coordenacao(id),
-                         FOREIGN KEY (id_psicologo) REFERENCES psicologos(id_psicologo),
-                         FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente)
+                         FOREIGN KEY (id_psicologo) REFERENCES psicologos(id),
+                         FOREIGN KEY (id_paciente) REFERENCES pacientes(id)
 );

@@ -39,13 +39,14 @@ public class SessaoServiceImpl implements SessaoService {
         this.mapper = mapper;
     }
 
-    // 1. Agendar Sessão (Seguro: usa o ID do Usuario logado)
+    // 1. Agendar Sessão (Removida a lógica de segurança)
+    // Assinatura alterada para receber apenas o DTO, usando idPaciente dele.
     @Override
-    public SessaoDtoResponse agendarSessao(Long idUsuarioLogado, SessaoDtoRequest dto) {
+    public SessaoDtoResponse agendarSessao(SessaoDtoRequest dto) {
 
-        // Ponto de Segurança: Busca o Paciente pelo ID do Usuario logado
-        Paciente paciente = pacienteRepository.findById(idUsuarioLogado)
-                .orElseThrow(() -> new NoSuchElementException("Paciente não encontrado para este usuário logado."));
+        // Busca o Paciente pelo ID contido no DTO
+        Paciente paciente = pacienteRepository.findById(dto.idPaciente())
+                .orElseThrow(() -> new NoSuchElementException("Paciente não encontrado com o ID: " + dto.idPaciente()));
 
         // Busca as outras entidades
         Psicologo psicologo = psicologoRepository.findById(dto.idPsicologo())
@@ -55,7 +56,7 @@ public class SessaoServiceImpl implements SessaoService {
 
         // TODO: ADICIONAR VALIDAÇÃO DE CONFLITO DE HORÁRIO AQUI
 
-        // Cria a Sessão usando o Mapper
+        // Cria a Sessão usando o Mapper (Assinatura corrigida)
         Sessao sessao = mapper.entidade(dto, paciente, psicologo, coordenacao);
 
         Sessao salva = sessaoRepository.save(sessao);
@@ -63,7 +64,7 @@ public class SessaoServiceImpl implements SessaoService {
         return mapper.dtoResposta(salva);
     }
 
-    // 2. Aprovar Sessão (Restrito à Coordenação via SecurityConfig)
+    // 2. Aprovar Sessão
     @Override
     public SessaoDtoResponse aprovarSessao(Long idSessao) {
 
@@ -78,7 +79,6 @@ public class SessaoServiceImpl implements SessaoService {
         sessao.setStatus(SessaoStatus.APROVADA);
         sessao.setDataAprovacao(LocalDateTime.now());
 
-        // O @Transactional fará o save, mas chame explicitamente se necessário:
         Sessao atualizada = sessaoRepository.save(sessao);
 
         return mapper.dtoResposta(atualizada);

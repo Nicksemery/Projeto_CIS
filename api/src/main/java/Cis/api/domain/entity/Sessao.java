@@ -25,10 +25,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Sessao {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_sessao") // Mapeando a PK do SQL
     private Long id;
 
     // Relacionamentos ManyToOne:
@@ -41,20 +40,25 @@ public class Sessao {
     private Psicologo psicologo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_coordenacao_gestora", nullable = false)
+    // O nome da coluna no SQL é 'id_coordenacao'
+    @JoinColumn(name = "id_coordenacao", nullable = false)
     private Coordenacao coordenacaoGestora;
 
+    @Column(name = "Data_Hora") // Mapeando o nome do SQL
     private LocalDateTime dataHora;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    @Setter // Precisa mudar no método de aprovação
+    @Column(name = "Status", nullable = false) // Mapeando o nome do SQL
+    @Setter
     private SessaoStatus status = SessaoStatus.PENDENTE_APROVACAO;
 
-    @Setter // Precisa mudar no método de aprovação
+    @Setter
+    @Column(name = "Data_Aprovacao") // Mapeando o nome do SQL
     private LocalDateTime dataAprovacao;
 
+    @Column(name = "Observacoes") // Mapeando o nome do SQL
     private String observacoes;
+
 
     // Construtor para Agendamento
     public Sessao(Paciente paciente, Psicologo psicologo, Coordenacao coordenacaoGestora, LocalDateTime dataHora) {
@@ -65,6 +69,17 @@ public class Sessao {
         this.status = SessaoStatus.PENDENTE_APROVACAO;
     }
 
+    // Método para ser usado pela Coordenacao ao aprovar ou cancelar a sessão
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
 
+    public void cancelarSessao() {
+        if (this.status != SessaoStatus.REALIZADA) {
+            this.status = SessaoStatus.CANCELADA;
+        } else {
+            // Lançar exceção ou logar erro: não pode cancelar sessão já realizada
+        }
+    }
 
 }
