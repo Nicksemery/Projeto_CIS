@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface PsicologoRepository extends JpaRepository<Psicologo, Long> {
 
 
-    Optional<Psicologo> findByName(String name);
+    Optional<Psicologo> findByNome(String name);
     Optional<Psicologo> findByMatricula(String matricula);
 }

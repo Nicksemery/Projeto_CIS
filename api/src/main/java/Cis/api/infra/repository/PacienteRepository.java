@@ -9,4 +9,7 @@ public interface PacienteRepository extends JpaRepository<Paciente, Long> {
 
 
     Optional<Paciente> findByNome(String nome);
+
+    @Override
+    Optional<Paciente> findById(Long id);
 }

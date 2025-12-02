@@ -1,7 +1,6 @@
 package Cis.api.infra.mapper;
 
 import Cis.api.domain.dtos.request.coordenacao.CoordenacaoDtoRequest;
-import Cis.api.domain.dtos.request.coordenacao.CoordenacaoDtoUpdateRequest;
 import Cis.api.domain.dtos.response.CoordenacaoDtoResponse;
 import Cis.api.domain.entity.Coordenacao;
 import Cis.api.domain.entity.Usuario;
@@ -17,11 +16,12 @@ public class CoordenacaoMapper {
         return new Coordenacao(
                 dados.nome(),
                 dados.email(),
-                dados.telefone()
+                dados.matricula()
+
         );
     }
 
-    public CoordenacaoDtoResponse dtoResposta(Coordenacao coordenacao){
+    public CoordenacaoDtoResponse dtoResposta(Coordenacao coordenacao) {
         if (coordenacao == null) {
             return null;
         }
@@ -29,7 +29,7 @@ public class CoordenacaoMapper {
                 coordenacao.getId(),
                 coordenacao.getNome(),
                 coordenacao.getEmail(),
-                coordenacao.getTelefone()
+                coordenacao.getMatricula()
         );
     }
 }

@@ -7,7 +7,7 @@ import Cis.api.domain.dtos.response.PsicologoDtoRespons;
 import Cis.api.domain.entity.Coordenacao;
 import Cis.api.domain.entity.Psicologo;
 import Cis.api.domain.entity.Usuario;
-import Cis.api.infra.Config.Roles;
+import Cis.api.domain.enums.Roles;
 import Cis.api.infra.mapper.PsicologoMapper;
 import Cis.api.infra.repository.CoordenacaoRepository;
 import Cis.api.infra.repository.PsicologoRepository;

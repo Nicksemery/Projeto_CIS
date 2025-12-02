@@ -1,9 +1,8 @@
 package Cis.api.infra.service.impl;
 
 import Cis.api.domain.dtos.request.TokenDtoRequest;
-import Cis.api.domain.dtos.response.TokenDtoResponse;
 import Cis.api.domain.entity.Usuario;
-import Cis.api.infra.Config.Roles;
+import Cis.api.domain.enums.Roles;
 import Cis.api.infra.repository.UsuarioRepository;
 import Cis.api.infra.service.UsuarioService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,10 +24,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         var senhaCript = passwordEncoder.encode(dto.senha());
 
-        Usuario usuario = new Usuario();
-        usuario.setLogin(dto.login());
-        usuario.setSenha(senhaCript);
-        usuario.setPermissao(role);
+        Usuario usuario = new Usuario(dto.login(), senhaCript);
 
         return usuarioRepository.save(usuario);
     }

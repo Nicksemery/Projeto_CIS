@@ -22,7 +22,7 @@ public class PsicologoValidate {
     }
 
     public Psicologo validarPsicologoPorNome(String nome) {
-        return repository.findByName(nome.trim()).orElseThrow(() -> new RuntimeException("Nome não encontrado"));
+        return repository.findByNome(nome.trim()).orElseThrow(() -> new RuntimeException("Nome não encontrado"));
     }
 
     public void validarMatriculaExistente(String matricula) {
